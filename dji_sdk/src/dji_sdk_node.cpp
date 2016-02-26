@@ -8,7 +8,7 @@ DJI::onboardSDK::ROSAdapter *rosAdapter;
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "dji_sdk");
-    ros::NodeHandle nh;
+    ros::NodeHandle nh("dji_sdk");
     ros::NodeHandle nh_private("~");
 
     //new an object of adapter

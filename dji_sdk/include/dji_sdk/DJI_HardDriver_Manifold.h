@@ -159,7 +159,10 @@ class HardDriver_Manifold : public HardDriver {
                 B38400,
                 B57600,
                 B115200,
-                B230400
+                B230400,
+#ifndef __MACH__
+                B921600
+#endif
             };
             int std_rate[] = {
                 4800,
@@ -169,6 +172,7 @@ class HardDriver_Manifold : public HardDriver {
                 57600,
                 115200,
                 230400,
+                921600,
                 1000000,
                 1152000,
                 3000000,

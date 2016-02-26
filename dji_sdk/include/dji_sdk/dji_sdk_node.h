@@ -67,22 +67,22 @@ private:
     void init_publishers(ros::NodeHandle& nh)
     {
         // start ros publisher
-		activation_publisher = nh.advertise<std_msgs::UInt8>("dji_sdk/activation", 10);
-        acceleration_publisher = nh.advertise<dji_sdk::Acceleration>("dji_sdk/acceleration", 10);
-        attitude_quaternion_publisher = nh.advertise<dji_sdk::AttitudeQuaternion>("dji_sdk/attitude_quaternion", 10);
-        compass_publisher = nh.advertise<dji_sdk::Compass>("dji_sdk/compass", 10);
-        flight_control_info_publisher = nh.advertise<dji_sdk::FlightControlInfo>("dji_sdk/flight_control_info", 10);
-        flight_status_publisher = nh.advertise<std_msgs::UInt8>("dji_sdk/flight_status", 10);
-        gimbal_publisher = nh.advertise<dji_sdk::Gimbal>("dji_sdk/gimbal", 10);
-        global_position_publisher = nh.advertise<dji_sdk::GlobalPosition>("dji_sdk/global_position", 10);
-        local_position_publisher = nh.advertise<dji_sdk::LocalPosition>("dji_sdk/local_position", 10);
-        power_status_publisher = nh.advertise<dji_sdk::PowerStatus>("dji_sdk/power_status", 10);
-        rc_channels_publisher = nh.advertise<dji_sdk::RCChannels>("dji_sdk/rc_channels", 10);
-        velocity_publisher = nh.advertise<dji_sdk::Velocity>("dji_sdk/velocity", 10);
-        odometry_publisher = nh.advertise<nav_msgs::Odometry>("dji_sdk/odometry",10);
-        sdk_permission_publisher = nh.advertise<std_msgs::UInt8>("dji_sdk/sdk_permission", 10);
-        time_stamp_publisher = nh.advertise<dji_sdk::TimeStamp>("dji_sdk/time_stamp", 10);
-		data_received_from_remote_device_publisher = nh.advertise<dji_sdk::TransparentTransmissionData>("dji_sdk/data_received_from_remote_device",10);
+		activation_publisher = nh.advertise<std_msgs::UInt8>("activation", 10);
+        acceleration_publisher = nh.advertise<dji_sdk::Acceleration>("acceleration", 10);
+        attitude_quaternion_publisher = nh.advertise<dji_sdk::AttitudeQuaternion>("attitude_quaternion", 10);
+        compass_publisher = nh.advertise<dji_sdk::Compass>("compass", 10);
+        flight_control_info_publisher = nh.advertise<dji_sdk::FlightControlInfo>("flight_control_info", 10);
+        flight_status_publisher = nh.advertise<std_msgs::UInt8>("flight_status", 10);
+        gimbal_publisher = nh.advertise<dji_sdk::Gimbal>("gimbal", 10);
+        global_position_publisher = nh.advertise<dji_sdk::GlobalPosition>("global_position", 10);
+        local_position_publisher = nh.advertise<dji_sdk::LocalPosition>("local_position", 10);
+        power_status_publisher = nh.advertise<dji_sdk::PowerStatus>("power_status", 10);
+        rc_channels_publisher = nh.advertise<dji_sdk::RCChannels>("rc_channels", 10);
+        velocity_publisher = nh.advertise<dji_sdk::Velocity>("velocity", 10);
+        odometry_publisher = nh.advertise<nav_msgs::Odometry>("odometry",10);
+        sdk_permission_publisher = nh.advertise<std_msgs::UInt8>("sdk_permission", 10);
+        time_stamp_publisher = nh.advertise<dji_sdk::TimeStamp>("time_stamp", 10);
+		data_received_from_remote_device_publisher = nh.advertise<dji_sdk::TransparentTransmissionData>("data_received_from_remote_device",10);
     }
 
 //Services:
@@ -125,23 +125,23 @@ private:
 
     void init_services(ros::NodeHandle& nh)
     {
-		activation_service = nh.advertiseService("dji_sdk/activation", &DJISDKNode::activation_callback, this);
-        attitude_control_service = nh.advertiseService("dji_sdk/attitude_control", &DJISDKNode::attitude_control_callback, this);
-        camera_action_control_service = nh.advertiseService("dji_sdk/camera_action_control",&DJISDKNode::camera_action_control_callback, this);
-        drone_task_control_service = nh.advertiseService("dji_sdk/drone_task_control", &DJISDKNode::drone_task_control_callback, this);
-        gimbal_angle_control_service = nh.advertiseService("dji_sdk/gimbal_angle_control", &DJISDKNode::gimbal_angle_control_callback, this);
-        gimbal_speed_control_service = nh.advertiseService("dji_sdk/gimbal_speed_control", &DJISDKNode::gimbal_speed_control_callback, this);
-        global_position_control_service = nh.advertiseService("dji_sdk/global_position_control", &DJISDKNode::global_position_control_callback, this);
-        local_position_control_service = nh.advertiseService("dji_sdk/local_position_control", &DJISDKNode::local_position_control_callback, this);
-        sdk_permission_control_service = nh.advertiseService("dji_sdk/sdk_permission_control", &DJISDKNode::sdk_permission_control_callback, this);
-        velocity_control_service = nh.advertiseService("dji_sdk/velocity_control", &DJISDKNode::velocity_control_callback, this);
-		version_check_service = nh.advertiseService("dji_sdk/version_check", &DJISDKNode::version_check_callback, this);
-		virtual_rc_enable_control_service = nh.advertiseService("dji_sdk/virtual_rc_enable_control", &DJISDKNode::virtual_rc_enable_control_callback, this);
-		virtual_rc_data_control_service = nh.advertiseService("dji_sdk/virtual_rc_data_control", &DJISDKNode::virtual_rc_data_control_callback,this);
-		drone_arm_control_service = nh.advertiseService("dji_sdk/drone_arm_control", &DJISDKNode::drone_arm_control_callback, this);
-		sync_flag_control_service = nh.advertiseService("dji_sdk/sync_flag_control", &DJISDKNode::sync_flag_control_callback, this);
-		message_frequency_control_service = nh.advertiseService("dji_sdk/message_frequency_control", &DJISDKNode::message_frequency_control_callback, this);
-		send_data_to_remote_device_service = nh.advertiseService("dji_sdk/send_data_to_remote_device", &DJISDKNode::send_data_to_remote_device_callback,this);
+		activation_service = nh.advertiseService("activation", &DJISDKNode::activation_callback, this);
+        attitude_control_service = nh.advertiseService("attitude_control", &DJISDKNode::attitude_control_callback, this);
+        camera_action_control_service = nh.advertiseService("camera_action_control",&DJISDKNode::camera_action_control_callback, this);
+        drone_task_control_service = nh.advertiseService("drone_task_control", &DJISDKNode::drone_task_control_callback, this);
+        gimbal_angle_control_service = nh.advertiseService("gimbal_angle_control", &DJISDKNode::gimbal_angle_control_callback, this);
+        gimbal_speed_control_service = nh.advertiseService("gimbal_speed_control", &DJISDKNode::gimbal_speed_control_callback, this);
+        global_position_control_service = nh.advertiseService("global_position_control", &DJISDKNode::global_position_control_callback, this);
+        local_position_control_service = nh.advertiseService("local_position_control", &DJISDKNode::local_position_control_callback, this);
+        sdk_permission_control_service = nh.advertiseService("sdk_permission_control", &DJISDKNode::sdk_permission_control_callback, this);
+        velocity_control_service = nh.advertiseService("velocity_control", &DJISDKNode::velocity_control_callback, this);
+		version_check_service = nh.advertiseService("version_check", &DJISDKNode::version_check_callback, this);
+		virtual_rc_enable_control_service = nh.advertiseService("virtual_rc_enable_control", &DJISDKNode::virtual_rc_enable_control_callback, this);
+		virtual_rc_data_control_service = nh.advertiseService("virtual_rc_data_control", &DJISDKNode::virtual_rc_data_control_callback,this);
+		drone_arm_control_service = nh.advertiseService("drone_arm_control", &DJISDKNode::drone_arm_control_callback, this);
+		sync_flag_control_service = nh.advertiseService("sync_flag_control", &DJISDKNode::sync_flag_control_callback, this);
+		message_frequency_control_service = nh.advertiseService("message_frequency_control", &DJISDKNode::message_frequency_control_callback, this);
+		send_data_to_remote_device_service = nh.advertiseService("send_data_to_remote_device", &DJISDKNode::send_data_to_remote_device_callback,this);
     }
 
 //Actions:
@@ -172,22 +172,22 @@ private:
     void init_actions(ros::NodeHandle& nh)
     {
         drone_task_action_server = new DroneTaskActionServer(nh, 
-            "dji_sdk/drone_task_action", 
+            "drone_task_action",
             boost::bind(&DJISDKNode::drone_task_action_callback, this, _1), false);
         drone_task_action_server->start();
 
         local_position_navigation_action_server = new LocalPositionNavigationActionServer(nh, 
-            "dji_sdk/local_position_navigation_action", 
+            "local_position_navigation_action",
             boost::bind(&DJISDKNode::local_position_navigation_action_callback, this, _1), false);
         local_position_navigation_action_server->start();
 
         global_position_navigation_action_server = new GlobalPositionNavigationActionServer(nh, 
-            "dji_sdk/global_position_navigation_action", 
+            "global_position_navigation_action",
             boost::bind(&DJISDKNode::global_position_navigation_action_callback, this, _1), false );
         global_position_navigation_action_server->start();
 
         waypoint_navigation_action_server = new WaypointNavigationActionServer(nh, 
-            "dji_sdk/waypoint_navigation_action", 
+            "waypoint_navigation_action",
             boost::bind(&DJISDKNode::waypoint_navigation_action_callback, this, _1), false);
         waypoint_navigation_action_server->start();
     }
