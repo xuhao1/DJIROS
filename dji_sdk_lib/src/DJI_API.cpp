@@ -341,6 +341,11 @@ void CoreAPI::setFrequencyCallback(CoreAPI *This __UNUSED, Header *header,
 }
 Version CoreAPI::getVersion() const { return versionData.version; }
 
+VersionData CoreAPI::getVersionData() const
+{
+    return versionData;
+}
+
 void CoreAPI::setVersion(const Version &value) { versionData.version = value; }
 
 void CoreAPI::setControlCallback(CoreAPI *This, Header *header, UserData userData __UNUSED)

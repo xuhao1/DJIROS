@@ -264,9 +264,10 @@ int DJISDKNode::init_parameters(ros::NodeHandle& nh_private)
 
 
 
-DJISDKNode::DJISDKNode(ros::NodeHandle& nh, ros::NodeHandle& nh_private)
+DJISDKNode::DJISDKNode(std::string uuid,ros::NodeHandle& nh_private)
 {
-
+    init_parameters(nh_private);
+    ros::NodeHandle nh("dji_sdk"+uuid);
     init_publishers(nh);
     init_services(nh);
     init_actions(nh);
@@ -277,8 +278,6 @@ DJISDKNode::DJISDKNode(ros::NodeHandle& nh, ros::NodeHandle& nh_private)
     {
         DJISDKMission* dji_sdk_mission = new DJISDKMission(nh);
     }
-
-    init_parameters(nh_private);
 }
 
 

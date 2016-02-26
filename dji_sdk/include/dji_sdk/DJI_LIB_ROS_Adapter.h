@@ -100,6 +100,8 @@ class ROSAdapter {
                 ROS_INFO("Succeed to create thread for readPoll");
 
             coreAPI->getVersion();
+            ROS_INFO("Wait for the drone UUID");
+            ros::Duration(0.2).sleep();
         }
 
 
@@ -155,6 +157,7 @@ class ROSAdapter {
         WayPoint *waypoint;
         HotPoint *hotpoint;
         Follow *followme;
+        Version version;
 
 
     private:

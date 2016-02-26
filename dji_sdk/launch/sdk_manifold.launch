@@ -10,5 +10,6 @@
 		<param name="groundstation_enable" type="int" value="1"/>
 		<param name="uart_or_usb" type="int" value="0"/>
 		<param name="A3_or_M100" type="int" value="1"/>
+		<param name="using_unique_id" type="bool" value="1"
 	</node>
 </launch>

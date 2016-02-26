@@ -333,6 +333,7 @@ class CoreAPI
     ActivateData getAccountData() const;
     HardDriver *getDriver() const;
     Version getVersion() const;
+    VersionData getVersionData() const;
     bool getHotPointData() const;
     bool getWayPointData() const;
     bool getFollowData() const;

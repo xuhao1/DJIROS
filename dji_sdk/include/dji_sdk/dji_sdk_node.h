@@ -193,7 +193,7 @@ private:
     }
 
 public:
-    DJISDKNode(ros::NodeHandle& nh, ros::NodeHandle& nh_private);
+    DJISDKNode(std::string uuid,ros::NodeHandle& nh_private);
 
 private:
     int init_parameters(ros::NodeHandle& nh_private);

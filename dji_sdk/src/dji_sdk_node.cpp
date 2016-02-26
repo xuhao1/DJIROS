@@ -8,13 +8,18 @@ DJI::onboardSDK::ROSAdapter *rosAdapter;
 
 int main(int argc, char **argv) {
     ros::init(argc, argv, "dji_sdk");
-    ros::NodeHandle nh("dji_sdk");
+    //ros::NodeHandle nh("dji_sdk");
     ros::NodeHandle nh_private("~");
 
     //new an object of adapter
     rosAdapter = new DJI::onboardSDK::ROSAdapter;
-
-    DJISDKNode* dji_sdk_node = new DJISDKNode(nh, nh_private);
+    std::string uuid = rosAdapter->coreAPI->getVersionData().version_ID;
+    if (uuid=="")
+    {
+        ROS_INFO("Cannot read uuid,use \"fuck\"!");
+        uuid = "fuck";
+    }
+    DJISDKNode* dji_sdk_node = new DJISDKNode(uuid, nh_private);
 
     ros::AsyncSpinner spinner(4); // Use 4 threads
     spinner.start();
