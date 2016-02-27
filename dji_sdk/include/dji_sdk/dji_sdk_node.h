@@ -38,6 +38,7 @@ private:
     bool sdk_permission_opened = false;
 	bool activation_result = false;
     bool localposbase_use_height = true;
+    std::string nodename = "dji_sdk";
 
     int global_position_ref_seted = 0;
 
@@ -67,6 +68,7 @@ private:
     void init_publishers(ros::NodeHandle& nh)
     {
         // start ros publisher
+        ROS_INFO("init publishers...");
 		activation_publisher = nh.advertise<std_msgs::UInt8>("activation", 10);
         acceleration_publisher = nh.advertise<dji_sdk::Acceleration>("acceleration", 10);
         attitude_quaternion_publisher = nh.advertise<dji_sdk::AttitudeQuaternion>("attitude_quaternion", 10);
@@ -125,6 +127,7 @@ private:
 
     void init_services(ros::NodeHandle& nh)
     {
+        ROS_INFO("Init services...");
 		activation_service = nh.advertiseService("activation", &DJISDKNode::activation_callback, this);
         attitude_control_service = nh.advertiseService("attitude_control", &DJISDKNode::attitude_control_callback, this);
         camera_action_control_service = nh.advertiseService("camera_action_control",&DJISDKNode::camera_action_control_callback, this);
@@ -171,7 +174,8 @@ private:
 
     void init_actions(ros::NodeHandle& nh)
     {
-        drone_task_action_server = new DroneTaskActionServer(nh, 
+        ROS_INFO("Init actions...");
+        drone_task_action_server = new DroneTaskActionServer(nh,
             "drone_task_action",
             boost::bind(&DJISDKNode::drone_task_action_callback, this, _1), false);
         drone_task_action_server->start();
@@ -193,7 +197,7 @@ private:
     }
 
 public:
-    DJISDKNode(std::string uuid,ros::NodeHandle& nh_private);
+    DJISDKNode(ros::NodeHandle& nh_private);
 
 private:
     int init_parameters(ros::NodeHandle& nh_private);

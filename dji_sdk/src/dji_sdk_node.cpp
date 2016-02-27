@@ -13,13 +13,8 @@ int main(int argc, char **argv) {
 
     //new an object of adapter
     rosAdapter = new DJI::onboardSDK::ROSAdapter;
-    std::string uuid = rosAdapter->coreAPI->getVersionData().version_ID;
-    if (uuid=="")
-    {
-        ROS_INFO("Cannot read uuid,use \"fuck\"!");
-        uuid = "fuck";
-    }
-    DJISDKNode* dji_sdk_node = new DJISDKNode(uuid, nh_private);
+    ROS_INFO("trying to init sdk node");
+    DJISDKNode* dji_sdk_node = new DJISDKNode(nh_private);
 
     ros::AsyncSpinner spinner(4); // Use 4 threads
     spinner.start();

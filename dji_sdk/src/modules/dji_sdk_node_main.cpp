@@ -263,20 +263,37 @@ int DJISDKNode::init_parameters(ros::NodeHandle& nh_private)
 }
 
 
-
-DJISDKNode::DJISDKNode(std::string uuid,ros::NodeHandle& nh_private)
+DJISDKNode::DJISDKNode(ros::NodeHandle& nh_private)
 {
     init_parameters(nh_private);
-    ros::NodeHandle nh("dji_sdk"+uuid);
-    init_publishers(nh);
-    init_services(nh);
-    init_actions(nh);
+    std::string uuid = rosAdapter->coreAPI->getVersionData().version_ID;
+    if (uuid=="")
+    {
+        ROS_INFO("Cannot read uuid,use \"fuck\"!");
+        uuid = "";
+    }
+    else
+    {
+        ROS_INFO("UUID is %s",uuid.c_str());
+        uuid =  std::string("_"+uuid.substr(0,4));
+#ifdef __MACH__
+        uuid = "";
+#endif
+    }
+
+    nodename = "dji_sdk" + uuid;
+
+    ros::NodeHandle * nh = new ros::NodeHandle(nodename);
+
+    init_publishers(*nh);
+    init_services(*nh);
+    init_actions(*nh);
 
     int groundstation_enable; 
     nh_private.param("groundstation_enable", groundstation_enable, 1);
     if(groundstation_enable)
     {
-        DJISDKMission* dji_sdk_mission = new DJISDKMission(nh);
+        DJISDKMission* dji_sdk_mission = new DJISDKMission(*nh);
     }
 }
 
